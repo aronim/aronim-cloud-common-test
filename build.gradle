@@ -1,0 +1,44 @@
+buildscript {
+    repositories {
+        maven {
+            url System.env.NEXUS_PUBLIC_REPOSITORY_URL
+            credentials {
+                username System.env.NEXUS_DEPLOYMENT_USERNAME
+                password System.env.NEXUS_DEPLOYMENT_PASSWORD
+            }
+        }
+    }
+    dependencies {
+        classpath "net.saliman:gradle-properties-plugin:1.4.4"
+    }
+}
+
+// Plugins
+
+apply plugin: "java"
+apply plugin: "net.saliman.properties"
+
+apply from: "${projectDir}/gradle/version.gradle"
+apply from: "${projectDir}/gradle/maven.gradle"
+apply from: "${projectDir}/gradle/publish.gradle"
+
+// Properties
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+// Dependencies
+
+dependencies {
+
+    compile("org.springframework:spring-beans:4.1.6.RELEASE")
+    compile("org.springframework:spring-context:4.1.6.RELEASE")
+    compile("org.springframework:spring-context-support:4.1.6.RELEASE")
+    compile("org.springframework:spring-core:4.1.6.RELEASE") {
+        exclude group: "commons-logging", module: "commons-logging"
+    }
+    compile("org.springframework:spring-test:4.1.6.RELEASE")
+
+    compile("org.seleniumhq.selenium:selenium-java:2.48.2")
+    compile("org.assertj:assertj-core:3.0.0")
+}
