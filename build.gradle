@@ -1,10 +1,10 @@
 buildscript {
     repositories {
         maven {
-            url System.env.NEXUS_PUBLIC_REPOSITORY_URL
+            url nexusPublicRepositoryUrl
             credentials {
-                username System.env.NEXUS_DEPLOYMENT_USERNAME
-                password System.env.NEXUS_DEPLOYMENT_PASSWORD
+                username nexusDeploymentUsername
+                password nexusDeploymentPassword
             }
         }
     }
