@@ -70,9 +70,9 @@ public class SeleniumTestExecutionListener extends AbstractTestExecutionListener
         String testName = toLowerUnderscore(testContext.getTestClass().getSimpleName());
         String methodName = toLowerUnderscore(testContext.getTestMethod().getName());
 
-        new File("target/screenshots").mkdirs();
+        new File("build/test-results/screenshots").mkdirs();
 
         Files.copy(screenshot.toPath(),
-                Paths.get("target/screenshots", testName + "_" + methodName + "_" + screenshot.getName()));
+                Paths.get("build/test-results/screenshots", testName + "_" + methodName + "_" + screenshot.getName()));
     }
 }
