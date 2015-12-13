@@ -29,9 +29,9 @@ public class WebDriverFactory {
 
     private static boolean isGoEnvironment() {
 
-        String environmentName = System.getProperty("environmentName");
+        String goEnvironmentName = System.getenv("GO_ENVIRONMENT_NAME");
 
-        return environmentName != null && environmentName.equals("go");
+        return goEnvironmentName != null;
     }
 
     private static WebDriver getRemoteWebDriver() {
