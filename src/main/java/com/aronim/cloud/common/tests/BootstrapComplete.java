@@ -1,4 +1,4 @@
-package com.kungfudev.cloud.common.tests;
+package com.aronim.cloud.common.tests;
 
 import com.google.common.base.Predicate;
 import org.openqa.selenium.JavascriptExecutor;
@@ -16,7 +16,7 @@ public final class BootstrapComplete implements Predicate<WebDriver> {
 
         Boolean bootstrapComplete =
                 (Boolean) ((JavascriptExecutor) webDriver)
-                        .executeScript("return window.kdc.bootstrap.done");
+                        .executeScript("return window.aronim.cloud.bootstrap.done");
 
         return bootstrapComplete == null ? false : bootstrapComplete;
     }

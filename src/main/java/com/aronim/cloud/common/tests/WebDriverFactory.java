@@ -1,4 +1,4 @@
-package com.kungfudev.cloud.common.tests;
+package com.aronim.cloud.common.tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

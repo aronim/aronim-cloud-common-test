@@ -1,4 +1,4 @@
-package com.kungfudev.cloud.common.tests;
+package com.aronim.cloud.common.tests;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -15,7 +15,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static com.kungfudev.cloud.common.tests.CaseFormat.toLowerUnderscore;
+import static com.aronim.cloud.common.tests.CaseFormat.toLowerUnderscore;
 import static org.springframework.core.annotation.AnnotationUtils.findAnnotation;
 
 public class SeleniumTestExecutionListener extends AbstractTestExecutionListener {

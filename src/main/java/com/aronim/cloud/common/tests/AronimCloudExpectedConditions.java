@@ -1,4 +1,4 @@
-package com.kungfudev.cloud.common.tests;
+package com.aronim.cloud.common.tests;
 
 import com.google.common.base.Predicate;
 import org.openqa.selenium.WebDriver;
@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
  * Date: 2015-12-13
  * Time: 19h21
  */
-public class KdcExpectedConditions {
+public class AronimCloudExpectedConditions {
 
     public static Predicate<WebDriver> bootstrapComplete() {
         return new BootstrapComplete();

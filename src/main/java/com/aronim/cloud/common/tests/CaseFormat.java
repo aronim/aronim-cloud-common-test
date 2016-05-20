@@ -1,4 +1,4 @@
-package com.kungfudev.cloud.common.tests;
+package com.aronim.cloud.common.tests;
 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
