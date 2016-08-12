@@ -13,50 +13,51 @@ import java.net.URL;
  * Date: 2015-12-13
  * Time: 19h25
  */
-public class WebDriverFactory {
-
+public class WebDriverFactory
+{
     public static final String REMOTE_URL = "http://hub:4444/wd/hub";
 
-    public static String getBaseUrl() {
-
-        return isGoEnvironment() ? "http://gocd-agent-build:8080" : "http://localhost:8080";
+    public static String getBaseUrl(int port)
+    {
+        return (isGoEnvironment() ? "http://gocd-agent-build:" : "http://localhost:") + port;
     }
 
-    public static WebDriver getWebDriver() {
-
+    public static WebDriver getWebDriver()
+    {
         return isGoEnvironment() ? getRemoteWebDriver() : new ChromeDriver();
     }
 
-    private static boolean isGoEnvironment() {
-
+    private static boolean isGoEnvironment()
+    {
         String goEnvironmentName = System.getenv("GO_ENVIRONMENT_NAME");
 
         return goEnvironmentName != null;
     }
 
-    private static WebDriver getRemoteWebDriver() {
-
+    private static WebDriver getRemoteWebDriver()
+    {
         URL remoteAddress = getUrl(REMOTE_URL);
         DesiredCapabilities desiredCapabilities = DesiredCapabilities.firefox();
 
         return new RemoteWebDriver(remoteAddress, desiredCapabilities);
     }
 
-    private static URL getUrl(String url) {
-
-        try {
-
+    private static URL getUrl(String url)
+    {
+        try
+        {
             return new URL(url);
-
-        } catch (MalformedURLException e) {
+        }
+        catch (MalformedURLException e)
+        {
             throw new RuntimeException(e);
         }
     }
 
-    public static WebDriver init(String path) {
-
+    public static WebDriver init(int port, String path)
+    {
         WebDriver driver = getWebDriver();
-        driver.get(WebDriverFactory.getBaseUrl() + path);
+        driver.get(WebDriverFactory.getBaseUrl(port) + path);
 
         return driver;
     }

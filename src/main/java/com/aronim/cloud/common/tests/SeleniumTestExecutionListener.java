@@ -18,22 +18,25 @@ import java.nio.file.Paths;
 import static com.aronim.cloud.common.tests.CaseFormat.toLowerUnderscore;
 import static org.springframework.core.annotation.AnnotationUtils.findAnnotation;
 
-public class SeleniumTestExecutionListener extends AbstractTestExecutionListener {
-
+public class SeleniumTestExecutionListener extends AbstractTestExecutionListener
+{
     private WebDriver webDriver;
 
-    public int getOrder() {
+    public int getOrder()
+    {
         return Ordered.HIGHEST_PRECEDENCE;
     }
 
     @Override
-    public void prepareTestInstance(TestContext testContext) throws Exception {
-        if (webDriver != null) {
+    public void prepareTestInstance(TestContext testContext) throws Exception
+    {
+        if (webDriver != null)
+        {
             return;
         }
         ApplicationContext context = testContext.getApplicationContext();
-        if (context instanceof ConfigurableApplicationContext) {
-
+        if (context instanceof ConfigurableApplicationContext)
+        {
             SeleniumTest annotation = findAnnotation(
                     testContext.getTestClass(), SeleniumTest.class);
             webDriver = BeanUtils.instantiate(annotation.driver());
@@ -45,8 +48,10 @@ public class SeleniumTestExecutionListener extends AbstractTestExecutionListener
     }
 
     @Override
-    public void beforeTestMethod(TestContext testContext) throws Exception {
-        if (webDriver != null) {
+    public void beforeTestMethod(TestContext testContext) throws Exception
+    {
+        if (webDriver != null)
+        {
             SeleniumTest annotation = findAnnotation(
                     testContext.getTestClass(), SeleniumTest.class);
             webDriver.get(annotation.baseUrl());
@@ -54,15 +59,19 @@ public class SeleniumTestExecutionListener extends AbstractTestExecutionListener
     }
 
     @Override
-    public void afterTestClass(TestContext testContext) throws Exception {
-        if (webDriver != null) {
+    public void afterTestClass(TestContext testContext) throws Exception
+    {
+        if (webDriver != null)
+        {
             webDriver.quit();
         }
     }
 
     @Override
-    public void afterTestMethod(TestContext testContext) throws Exception {
-        if (testContext.getTestException() == null) {
+    public void afterTestMethod(TestContext testContext) throws Exception
+    {
+        if (testContext.getTestException() == null)
+        {
             return;
         }
 
