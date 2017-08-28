@@ -1,0 +1,8 @@
+publishing {
+    repositories {
+        maven {
+            name "mavenReleasesRepo"
+            url "http://nexus.aronim.com/content/repositories/releases/"
+        }
+    }
+}
