@@ -1,11 +1,5 @@
 apply plugin: "maven"
 
 repositories {
-    maven {
-        url nexusPublicRepositoryUrl
-        credentials {
-            username nexusDeploymentUsername
-            password nexusDeploymentPassword
-        }
-    }
+    mavenCentral()
 }

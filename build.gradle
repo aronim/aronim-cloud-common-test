@@ -1,12 +1,6 @@
 buildscript {
     repositories {
-        maven {
-            url nexusPublicRepositoryUrl
-            credentials {
-                username nexusDeploymentUsername
-                password nexusDeploymentPassword
-            }
-        }
+        mavenCentral()
     }
     dependencies {
         classpath "net.saliman:gradle-properties-plugin:1.4.4"
